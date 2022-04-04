@@ -540,15 +540,10 @@ enableEmoji = true
   # website images for Open Graph and Twitter Cards
   # 网站图片, 用于 Open Graph 和 Twitter Cards
   images = ["/images/avatar.webp"]
-  # enable PWA
-  # 开启 PWA 支持
-  enablePWA = true
   # mouse click effect boom or drop
-  click_effect = "drop"
+  click_effect = true
   # 控制台输出彩蛋
   console_output = true
-  # 开启网页背景
-  background_img = false
   [params.live2d]
     enable = true
     # 人物模型

@@ -13,9 +13,6 @@
     {{- with .Site.Params.app.iconColor -}}
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="{{ . }}">
     {{- end -}}
-    {{- if eq .Site.Params.enablePWA true -}}
-        <link rel="manifest" href="/site.webmanifest">
-    {{- end -}}
 {{- end -}}
 
 <link rel="canonical" href="{{ .Permalink }}" />
