@@ -544,6 +544,12 @@ enableEmoji = true
   click_effect = true
   # 控制台输出彩蛋
   console_output = true
+
+  # 谷歌AdSense广告配置
+  [params.AdSense]
+    enable = true
+    id = "ca-pub-8246144338693388"
+
   [params.live2d]
     enable = true
     # 人物模型
@@ -627,8 +633,6 @@ enableEmoji = true
     license= '<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>'
     # 又拍云广告，白嫖又拍云CDN需要给又拍云打广告
     upyuncdnAd = true
-    # 博客上线计时
-    uptime = false
 
   # Section (all posts) page config
   # Section (所有文章) 页面配置
