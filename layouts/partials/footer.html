@@ -1,0 +1,107 @@
+{{- if ne .Site.Params.footer.enable false -}}
+    <footer class="footer">
+        <div class="footer-container">
+            {{- /* Custom Content */ -}}
+            {{- with .Site.Params.footer.custom -}}
+                <div class="footer-line">
+                    {{- safeHTML . -}}
+                </div>
+            {{- end -}}
+
+            {{- /* Hugo and simpleit */ -}}
+            {{- if ne .Site.Params.footer.hugo false -}}
+                <div class="footer-line">
+                    {{- $hugo := printf `<a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo %v">Hugo</a>` hugo.Version -}}
+                    {{- $theme := .Scratch.Get "version" | printf `<a href="https://github.com/iuxt/simpleit" target="_blank" rel="noopener noreffer" title="simpleit %v"><i class="far fa-edit fa-fw"></i> simpleit</a>` -}}
+                    {{- dict "Hugo" $hugo "Theme" $theme | T "poweredBySome" | safeHTML }}
+                </div>
+            {{- end -}}
+
+            {{- /* Upyun_FreeCDN */ -}}
+            {{- if eq .Site.Params.footer.upyuncdnAd true -}}
+                <div class="footer-line">
+                    <span class="upyuncdnAd"><a href='https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral'>本网站由<img src='/images/upyun.svg' alt='又拍云' width='60' style="vertical-align:bottom">提供CDN加速/云存储服务</a></span>
+                </div>
+            {{- end -}}
+            
+            <div class="footer-line">
+                {{- /* Copyright year */ -}}
+                {{- if ne .Site.Params.footer.copyright false -}}
+                    <i class="far fa-copyright fa-fw"></i>
+                    {{- with .Site.Params.footer.since -}}
+                        <span itemprop="copyrightYear">
+                            {{- if lt . now.Year }}{{ . }} - {{ end }}{{ now.Year -}}
+                        </span>
+                    {{- else -}}
+                        <span itemprop="copyrightYear">{{ now.Year }}</span>
+                    {{- end -}}
+                {{- end -}}
+
+                {{- /* Author */ -}}
+                {{- if ne .Site.Params.footer.author false -}}
+                    <span class="author" itemprop="copyrightHolder">&nbsp;<a href="{{ $.Site.Author.link | default .Site.Home.RelPermalink }}" target="_blank" rel="noopener noreferrer">{{ .Site.Author.name }}</a></span>
+                {{- end -}}
+
+                {{- /* License */ -}}
+                {{- with .Site.Params.footer.license -}}
+                    &nbsp;|&nbsp;<span class="license">{{ . | safeHTML }}</span>
+                {{- end -}}
+
+                {{- /* ICP */ -}}
+                {{- with .Site.Params.footer.icp -}}
+                    <span class="icp-splitter">&nbsp;|&nbsp;</span><br class="icp-br"/>
+                    <span class="icp">{{ . | safeHTML }}</span>
+                {{- end -}}
+            </div>
+        </div>
+        
+        {{- /* Console Output */ -}}
+        {{- if eq .Site.Params.ConsoleOutput true -}}
+            <script type="text/javascript" src="/js/console_output.js"></script>
+        {{- end -}}
+       
+        {{- /* 鼠标点击爆炸效果 */ -}}
+        {{- if eq .Site.Params.MouseClickEffect true -}}
+            <script type="text/javascript" src="/js/mouse_click_effect.js"></script>
+        {{- end -}}
+
+        {{- /* AdSense广告 */ -}}
+        {{- if eq .Site.Params.AdSense.enable true -}}
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8246144338693388"
+        crossorigin="anonymous"></script>
+        {{- end -}}
+        
+        {{- /* Live2D，网页上的小人 */ -}}
+        {{- if eq .Site.Params.live2d.enable true -}}
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/iuxt/live2d_models@master/js/L2Dwidget.min.js"></script>
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/iuxt/live2d_models@master/js/L2Dwidget.0.min.js"></script>
+            <script type="text/javascript">
+                L2Dwidget.init({
+                    model: {
+                        scale: 1,
+                        hHeadPos: 0.5,
+                        vHeadPos: 0.618,
+                        jsonPath: '{{ .Site.Params.live2d.model }}',
+                    },
+                    display: {
+                        superSample: 2,     // 超采样等级
+                        width: '{{ .Site.Params.live2d.width }}',
+                        height: '{{ .Site.Params.live2d.height }}',
+                        position: '{{ .Site.Params.live2d.position }}',   // 显示位置：左或右
+                        hOffset: '{{ .Site.Params.live2d.hOffset }}',         // canvas水平偏移
+                        vOffset: '{{ .Site.Params.live2d.vOffset }}',         // canvas垂直偏移
+                    },
+                    mobile: {
+                        show: '{{ .Site.Params.live2d.mobile_show }}',         // 是否在移动设备上显示
+                        scale: '{{ .Site.Params.live2d.mobile_scale }}',           // 移动设备上的缩放
+                        motion: '{{ .Site.Params.live2d.mobile_motion }}',
+                    },
+                    react: {
+                        opacityDefault: '{{ .Site.Params.live2d.opacityDefault }}',  // 默认透明度
+                        opacityOnHover: '{{ .Site.Params.live2d.opacityOnHover }}',  // 鼠标移上透明度
+                    },
+                });
+            </script>
+        {{- end -}}
+    </footer>
+{{- end -}}
