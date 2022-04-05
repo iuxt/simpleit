@@ -165,3 +165,41 @@ Hugo 附带了一组预定义的 shortcodes, 它们实现了一些非常常见�
 呈现的输出效果如下:
 
 {{< youtube w7Ft2ymGmfc >}}
+
+## 9 tabs
+
+```markdown
+{{</* tabs "uniqueid" */>}}
+
+{{</* tab "MacOS" */>}} 
+# MacOS Content 
+{{</* /tab */>}}
+
+{{</* tab "Linux" */>}} 
+# Linux Content 
+{{</* /tab */>}}
+
+{{</* tab "Windows" */>}} 
+# Windows Content 
+{{</* /tab */>}}
+
+{{</* /tabs */>}}
+```
+
+显示效果如下：
+
+{{< tabs "uniqueid" >}}
+
+{{< tab "MacOS" >}}
+# MacOS Content
+{{< /tab >}}
+
+{{< tab "Linux" >}}
+# Linux Content
+{{< /tab >}}
+
+{{< tab "Windows" >}}
+# Windows Content
+{{< /tab >}}
+
+{{< /tabs >}}

@@ -164,3 +164,41 @@ Example `youtube` input:
 The rendered output looks like this:
 
 {{< youtube w7Ft2ymGmfc >}}
+
+## 9 tabs
+
+```markdown
+{{</* tabs "uniqueid" */>}}
+
+{{</* tab "MacOS" */>}} 
+# MacOS Content 
+{{</* /tab */>}}
+
+{{</* tab "Linux" */>}} 
+# Linux Content 
+{{</* /tab */>}}
+
+{{</* tab "Windows" */>}} 
+# Windows Content 
+{{</* /tab */>}}
+
+{{</* /tabs */>}}
+```
+
+The rendered output looks like this:
+
+{{< tabs "uniqueid" >}}
+
+{{< tab "MacOS" >}}
+# MacOS Content
+{{< /tab >}}
+
+{{< tab "Linux" >}}
+# Linux Content
+{{< /tab >}}
+
+{{< tab "Windows" >}}
+# Windows Content
+{{< /tab >}}
+
+{{< /tabs >}}
