@@ -1,0 +1,166 @@
+// Used in layout
+$padding-1: 1px !default;
+$padding-4: 0.25rem !default;
+$padding-8: 0.5rem !default;
+$padding-16: 1rem !default;
+
+$font-size-base: 16px !default;
+$font-size-12: 0.75rem !default;
+$font-size-14: 0.875rem !default;
+$font-size-16: 1rem !default;
+
+$border-radius: $padding-4 !default;
+
+
+
+
+   
+.flex {
+  display: flex;
+}
+
+.flex-auto {
+  flex: 1 1 auto;
+}
+
+.flex-even {
+  flex: 1 1;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.mx-auto {
+  margin: 0 auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.hidden {
+  display: none;
+}
+
+input.toggle {
+  height: 0;
+  width: 0;
+  overflow: hidden;
+  opacity: 0;
+  position: absolute;
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@mixin spin($duration) {
+  animation: spin $duration ease infinite;
+  @keyframes spin {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+@mixin fixed {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+@mixin outline {
+    outline-style: none;
+    outline-color: currentColor;
+    outline-color: -webkit-focus-ring-color;
+    --gray-100: #f8f9fa;
+    --gray-200: #e9ecef;
+    --gray-500: #adb5bd;
+
+    --color-link: #0055bb;
+    --color-visited-link: #8440f1;
+
+    --body-background: white;
+    --body-font-color: black;
+
+    --icon-filter: none;
+
+    --hint-color-info: #6bf;
+    --hint-color-warning: #fd6;
+    --hint-color-danger: #f66;
+}
+
+
+
+  
+// {{< tabs >}}
+.book-tabs {
+    margin-top: $padding-16;
+    margin-bottom: $padding-16;
+
+    border: $padding-1 solid var(--gray-200);
+    border-radius: $border-radius;
+
+    overflow: hidden;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    label {
+        display: inline-block;
+        padding: $padding-8 $padding-16;
+        border-bottom: $padding-1 transparent;
+        cursor: pointer;
+    }
+
+    .book-tabs-content {
+        order: 999; //Move content blocks to the end
+        width: 100%;
+        border-top: $padding-1 solid var(--gray-100);
+        padding: $padding-16;
+        display: none;
+    }
+
+    input[type="radio"]:checked + label {
+    border-bottom: $padding-1 solid var(--color-link);
+    }
+    input[type="radio"]:checked + label + .book-tabs-content {
+    display: block;
+    }
+    input[type="radio"]:focus + label {
+    @include outline;
+    }
+}
+  
