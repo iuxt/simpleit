@@ -1,15 +1,23 @@
-{{ if .Inner }}{{ end }}
-{{ $id := .Get 0 }}
-{{ $group := printf "tabs-%s" $id }}
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+		{{ $tabTotal := .Get "tabTotal" }}
+		{{ $tabRightAlign := .Get "tabRightAlign" }}
+		{{ $tabName := .Scratch.Get "tabName" }}
+		{{ $tabID := .Scratch.Get "tabID" }}
 
-<div class="book-tabs">
-{{- range $index, $tab := .Scratch.Get $group -}}
-  <input type="radio" class="toggle" name="{{ $group }}" id="{{ printf "%s-%d" $group $index }}" {{ if not $index }}checked="checked"{{ end }} />
-  <label for="{{ printf "%s-%d" $group $index }}">
-    {{- $tab.Name -}}
-  </label>
-  <div class="book-tabs-content markdown-inner">
-    {{- .Content | $.Page.RenderString -}}
-  </div>
-{{- end -}}
+		{{ range $i, $sequence := (seq $tabTotal) }}
+
+		<a class="nav-link {{ if eq $i 0 }} active {{ end }}{{ if in $tabRightAlign (add 1 $i) }} ms-auto {{ end }}"
+		   id="{{ (index $tabID $i) }}-tab" data-bs-toggle="tab" data-bs-target="#{{ (index $tabID $i) }}"
+		   type="button" role="tab" aria-controls="nav-home" aria-selected="true">{{ (replaceRE "(\\s)" "" (index $tabName $i)) }}</a>
+
+		{{ end }}
+
+	</div>
+</nav>
+
+<div class="tab-content" id="nav-tab-content">
+
+	{{ .Inner }}
+
 </div>

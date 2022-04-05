@@ -169,37 +169,80 @@ Hugo 附带了一组预定义的 shortcodes, 它们实现了一些非常常见�
 ## 9 tabs
 
 ```markdown
-{{</* tabs "uniqueid" */>}}
+{{</* tabs tabTotal="1" */>}}
+{{</* tab tabName="Tab 1" */>}}
 
-{{</* tab "MacOS" */>}} 
-# MacOS Content 
+**Tab 1 Content**
+
 {{</* /tab */>}}
-
-{{</* tab "Linux" */>}} 
-# Linux Content 
-{{</* /tab */>}}
-
-{{</* tab "Windows" */>}} 
-# Windows Content 
-{{</* /tab */>}}
-
 {{</* /tabs */>}}
 ```
 
-显示效果如下：
+效果如下：
 
-{{< tabs "uniqueid" >}}
+{{< tabs tabTotal="1" >}}
+{{< tab tabName="Tab 1" >}}
 
-{{< tab "MacOS" >}}
-# MacOS Content
+**Tab 1 Content**
+
 {{< /tab >}}
-
-{{< tab "Linux" >}}
-# Linux Content
-{{< /tab >}}
-
-{{< tab "Windows" >}}
-# Windows Content
-{{< /tab >}}
-
 {{< /tabs >}}
+
+The following is an example of Hugo Dynamic Tabs being used with multiple nested tab shortcodes.
+
+```markdown
+{{</* tabs tabTotal="3" tabRightAlign="2"*/>}}
+{{</* tab tabName="Tab 1" */>}}
+
+**Tab 1 Content**
+
+{{</* /tab */>}}
+{{</* tab tabName="Tab 2" */>}}
+
+**Tab 2 Content**
+
+{{</* /tab */>}}
+{{</* tab tabName="Tab 3"*/>}}
+
+**Tab 3 Content**
+
+{{</* /tab */>}}
+{{</* /tabs */>}}
+```
+
+效果如下：
+
+{{< tabs tabTotal="3" tabRightAlign="2">}}
+{{< tab tabName="Tab 1" >}}
+
+**Tab 1 Content**
+
+{{< /tab >}}
+{{< tab tabName="Tab 2" >}}
+
+**Tab 2 Content**
+
+{{< /tab >}}
+{{< tab tabName="Tab 3">}}
+
+**Tab 3 Content**
+
+{{< /tab >}}
+{{< /tabs >}}
+
+### tabs.html
+
+This is the parent shortcodes that wraps around all nested tab shortcodes in the tab group and generates the tab navigation.
+
+| Variable  | Description |
+| --------- | ----------- |
+| tabTotal | This variable is used to generate the tab navigation. Simply set it to the amount of tab shortcodes you have. In the above example, since there are **three** nested tab shortcodes, you would set **tabTotal** to **three**.|
+| tabRightAlign | This is an optional variable that if used will right align the tab number you inputted and all tabs after it. In the above example, since **tabRightAlign** is set to **two**, tabs 2 and 3 will be right aligned.  |
+
+### tab.html
+
+This is a child shortcode that is nested in the tabs shortcodes. Each tab shortcode equals one tab so add as many as you need. Please note, make sure **tabTotal** in the tabs shortcode is equal to the amount of tab shortcodes you use.
+
+| Variable  | Description |
+| --------- | ----------- |
+| tabName | This variable holds the name of the tab.  |
