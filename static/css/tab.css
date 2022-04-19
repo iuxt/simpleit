@@ -48,8 +48,8 @@
 }
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
-  color: #e6e200;
-  background-color: #353b41;
+  color: #eeeeee;
+  background-color: #686868;
   border-color: #dee2e6 #dee2e6 #fff;
 }
 .nav-tabs .dropdown-menu {
