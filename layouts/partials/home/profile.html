@@ -40,9 +40,12 @@
     {{- end -}}
     <!--google-->  
     <div>
-        <form action="https://www.google.com/search" method="get">  
-            <input type="text" name="q" size="20" maxlength="255" value="" />  
+        <form action="https://www.google.com/search" method="get">
+            <!-- 搜索参数 https://www.google.com/search?q=xxx -->
+            <input type="text" name="q" size="20" maxlength="255" value="" />
+            <!-- 显示Google的按钮 -->
             <input type="submit" name="btnG" value="Google" />
+            <!-- 本站搜索, 会在搜索框中加入site:zahui.fan -->
             <input type="hidden" name="sitesearch" value="zahui.fan"/>
         </form>
     </div>
