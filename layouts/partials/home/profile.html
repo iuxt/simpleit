@@ -38,7 +38,14 @@
             {{- end -}}
         </h2>
     {{- end -}}
-
+    <!--google-->  
+    <div>
+        <form action="https://www.google.com/search" method="get">  
+            <input type="text" name="q" size="20" maxlength="255" value="" />  
+            <input type="submit" name="btnG" value="Google" />
+            <input type="hidden" name="sitesearch" value="zahui.fan"/>
+        </form>
+    </div>
     {{- if $profile.social -}}
         <div class="links">
             {{- $socialMap := resources.Get "data/social.yml" | transform.Unmarshal -}}
@@ -86,9 +93,6 @@
             {{- end -}}
         </div>
     {{- end -}}
-    <script async src="https://cse.google.com/cse.js?cx=f02c41c8f466348f1">
-    </script>
-    <div class="gcse-search"></div>
     {{- with $profile.disclaimer -}}
         <h3 class="home-disclaimer">
             {{- . | safeHTML -}}
