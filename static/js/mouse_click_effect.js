@@ -18,7 +18,7 @@ function clickEffect() {
       window.addEventListener('resize', updateSize, false);
       loop();
       window.addEventListener("mousedown", function(e) {
-        pushBalls(randBetween(10, 20), e.clientX, e.clientY);
+        pushBalls(randBetween(6, 9), e.clientX, e.clientY);                      // 这个是球的数量
         document.body.classList.add("is-pressed");
       }, false);
       window.addEventListener("mouseup", function(e) {
@@ -57,10 +57,10 @@ function clickEffect() {
         this.x = x;
         this.y = y;
         this.angle = Math.PI * 2 * Math.random();
-        this.multiplier = randBetween(6, 12);
+        this.multiplier = randBetween(2, 4);                                          // 爆炸的范围
         this.vx = (this.multiplier + Math.random() * 0.5) * Math.cos(this.angle);
         this.vy = (this.multiplier + Math.random() * 0.5) * Math.sin(this.angle);
-        this.r = randBetween(8, 12) + 3 * Math.random();
+        this.r = randBetween(4, 6) + 3 * Math.random();                               // 球的大小
         this.color = colours[Math.floor(Math.random() * colours.length)];
       }
       update() {
